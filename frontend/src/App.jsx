@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ScatterChart, Scatter, XAxis, YAxis, ZAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = 'https://ml-patient-backend.onrender.com/';
 
 function App() {
   const [metadata, setMetadata] = useState({ genders: [], blood_types: [], conditions: [], admission_types: [] });
-  const [task, setTask] = useState('diagnostic'); 
+  const [task, setTask] = useState('diagnostic');
   const [formData, setFormData] = useState({ Age: '45', Gender: '', Blood_Type: '', Medical_Condition: '', Admission_Type: '', Stay_Duration: '7' });
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -46,28 +46,28 @@ function App() {
       <aside className="sidebar">
         <header className="app-header"><h1>ML PATIENT APP</h1></header>
         <nav className="nav-pills">
-          <button className={`nav-btn ${task === 'diagnostic' ? 'active' : ''}`} onClick={() => {setTask('diagnostic'); setResult(null);}}>
-            <div style={{fontSize: '0.6rem', opacity: 0.7}}>PREDICTION</div>
-            <div style={{marginTop: '2px'}}>XGBOOST</div>
+          <button className={`nav-btn ${task === 'diagnostic' ? 'active' : ''}`} onClick={() => { setTask('diagnostic'); setResult(null); }}>
+            <div style={{ fontSize: '0.6rem', opacity: 0.7 }}>PREDICTION</div>
+            <div style={{ marginTop: '2px' }}>XGBOOST</div>
           </button>
-          <button className={`nav-btn ${task === 'cost' ? 'active' : ''}`} onClick={() => {setTask('cost'); setResult(null);}}>
-            <div style={{fontSize: '0.6rem', opacity: 0.7}}>RECOMMANDATION</div>
-            <div style={{marginTop: '2px'}}>RANDOM FOREST</div>
+          <button className={`nav-btn ${task === 'cost' ? 'active' : ''}`} onClick={() => { setTask('cost'); setResult(null); }}>
+            <div style={{ fontSize: '0.6rem', opacity: 0.7 }}>RECOMMANDATION</div>
+            <div style={{ marginTop: '2px' }}>RANDOM FOREST</div>
           </button>
-          <button className={`nav-btn ${task === 'segmentation' ? 'active' : ''}`} onClick={() => {setTask('segmentation'); setResult(null);}}>
-            <div style={{fontSize: '0.6rem', opacity: 0.7}}>SEGMENTATION</div>
-            <div style={{marginTop: '2px'}}>K-MEANS</div>
+          <button className={`nav-btn ${task === 'segmentation' ? 'active' : ''}`} onClick={() => { setTask('segmentation'); setResult(null); }}>
+            <div style={{ fontSize: '0.6rem', opacity: 0.7 }}>SEGMENTATION</div>
+            <div style={{ marginTop: '2px' }}>K-MEANS</div>
           </button>
         </nav>
         <div className="input-section">
           {error && <div style={{ color: '#ef4444', fontSize: '0.7rem', fontWeight: 800, marginBottom: '10px' }}>⚠️ {error}</div>}
           <form onSubmit={handleSubmit}>
-            <div className="form-field"><label>AGE</label><input type="number" value={formData.Age} onChange={e => setFormData({...formData, Age: e.target.value})} /></div>
-            <div className="form-field"><label>STAY DURATION</label><input type="number" value={formData.Stay_Duration} onChange={e => setFormData({...formData, Stay_Duration: e.target.value})} /></div>
-            <div className="form-field"><label>GENDER</label><select value={formData.Gender} onChange={e => setFormData({...formData, Gender: e.target.value})}><option value="">Select...</option>{metadata.genders.map(g => <option key={g} value={g}>{g}</option>)}</select></div>
-            <div className="form-field"><label>BLOOD TYPE</label><select value={formData.Blood_Type} onChange={e => setFormData({...formData, Blood_Type: e.target.value})}><option value="">Select...</option>{metadata.blood_types.map(b => <option key={b} value={b}>{b}</option>)}</select></div>
-            <div className="form-field"><label>CONDITION</label><select value={formData.Medical_Condition} onChange={e => setFormData({...formData, Medical_Condition: e.target.value})}><option value="">Select...</option>{metadata.conditions.map(c => <option key={c} value={c}>{c}</option>)}</select></div>
-            <div className="form-field"><label>ADMISSION</label><select value={formData.Admission_Type} onChange={e => setFormData({...formData, Admission_Type: e.target.value})}><option value="">Select...</option>{metadata.admission_types.map(a => <option key={a} value={a}>{a}</option>)}</select></div>
+            <div className="form-field"><label>AGE</label><input type="number" value={formData.Age} onChange={e => setFormData({ ...formData, Age: e.target.value })} /></div>
+            <div className="form-field"><label>STAY DURATION</label><input type="number" value={formData.Stay_Duration} onChange={e => setFormData({ ...formData, Stay_Duration: e.target.value })} /></div>
+            <div className="form-field"><label>GENDER</label><select value={formData.Gender} onChange={e => setFormData({ ...formData, Gender: e.target.value })}><option value="">Select...</option>{metadata.genders.map(g => <option key={g} value={g}>{g}</option>)}</select></div>
+            <div className="form-field"><label>BLOOD TYPE</label><select value={formData.Blood_Type} onChange={e => setFormData({ ...formData, Blood_Type: e.target.value })}><option value="">Select...</option>{metadata.blood_types.map(b => <option key={b} value={b}>{b}</option>)}</select></div>
+            <div className="form-field"><label>CONDITION</label><select value={formData.Medical_Condition} onChange={e => setFormData({ ...formData, Medical_Condition: e.target.value })}><option value="">Select...</option>{metadata.conditions.map(c => <option key={c} value={c}>{c}</option>)}</select></div>
+            <div className="form-field"><label>ADMISSION</label><select value={formData.Admission_Type} onChange={e => setFormData({ ...formData, Admission_Type: e.target.value })}><option value="">Select...</option>{metadata.admission_types.map(a => <option key={a} value={a}>{a}</option>)}</select></div>
             <button type="submit" className="action-btn" disabled={loading}>{loading ? "PROCESSING..." : "GENERATE REPORT"}</button>
           </form>
         </div>
@@ -78,7 +78,7 @@ function App() {
           <div className="report-container" style={{ textAlign: 'center', border: 'none', borderRadius: '24px' }}>
             <p style={{ fontWeight: 800, color: '#94a3b8', fontSize: '0.7rem', letterSpacing: '2px' }}>{result.type.toUpperCase()}</p>
             <h2 style={{ fontSize: '3.5rem', fontWeight: 900, color: getClusterColor(result.cluster), marginBottom: '20px' }}>{result.result}</h2>
-            
+
             {task === 'segmentation' && (
               <>
                 <div style={{ height: '350px', background: '#f8fafc', borderRadius: '16px', padding: '10px' }}>
@@ -88,10 +88,10 @@ function App() {
                       <YAxis type="number" dataKey="y" domain={[-8, 8]} hide />
                       <ZAxis type="number" range={[3000, 3000]} />
                       <Scatter name="Patient" data={[{ x: result.pca_x, y: result.pca_y }]} fill={getClusterColor(result.cluster)}>
-                        <Cell 
-                          fill={getClusterColor(result.cluster)} 
-                          strokeWidth={20} 
-                          stroke="rgba(255,255,255,1)" 
+                        <Cell
+                          fill={getClusterColor(result.cluster)}
+                          strokeWidth={20}
+                          stroke="rgba(255,255,255,1)"
                           style={{ filter: 'drop-shadow(0 4px 12px rgba(0,0,0,0.15))' }}
                         />
                       </Scatter>
