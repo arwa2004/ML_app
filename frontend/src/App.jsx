@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { ScatterChart, Scatter, XAxis, YAxis, ZAxis, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 
-const API_BASE = 'https://ml-patient-backend.onrender.com/';
+const API_BASE = 'https://ml-patient-backend.onrender.com';
 
 function App() {
   const [metadata, setMetadata] = useState({ genders: [], blood_types: [], conditions: [], admission_types: [] });
