@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+backend/venv/
+.env
+
+# React / Node
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+.DS_Store
+
+# Models (A garder si vous voulez que Render les voit sans re-entraîner)
+# Si vous voulez les envoyer sur GitHub, ne mettez pas "backend/models/" ici.

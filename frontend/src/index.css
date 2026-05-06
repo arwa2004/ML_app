@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --med-blue-dark: #0f172a;
+  --med-blue-primary: #0284c7;
+  --med-blue-light: #f0f9ff;
+  --med-teal: #0d9488;
+  --border-color: #e2e8f0;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --bg-app: #f8fafc;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.app-wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+/* SIDEBAR - 1/3 (33%) */
+.sidebar {
+  width: 33.33%;
+  background: white;
+  border-right: 1px solid var(--border-color);
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 10px 0 30px rgba(0,0,0,0.02);
+  overflow-y: auto;
+}
+
+.app-header {
+  margin-bottom: 30px;
+}
+
+.app-header h1 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--med-blue-dark);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.app-header h1::before {
+  content: '';
+  width: 4px;
+  height: 24px;
+  background: var(--med-blue-primary);
+  border-radius: 2px;
+}
+
+/* NAVIGATION EN LIGNE */
+.nav-pills {
+  display: flex;
+  flex-direction: row; /* Passage en ligne */
+  flex-wrap: wrap;    /* Permet le retour à la ligne si nécessaire */
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.nav-btn {
+  flex: 1; /* Les boutons prennent la même largeur */
+  min-width: 100px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: #f8fafc;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: 0.2s;
+  text-transform: uppercase;
+}
+
+.nav-btn:hover {
+  background: var(--med-blue-light);
+}
+
+.nav-btn.active {
+  background: var(--med-blue-light);
+  color: var(--med-blue-primary);
+  border-color: #bae6fd;
+}
+
+/* FORM STYLING */
+.input-section h3 {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 10px;
+}
+
+.form-field {
+  margin-bottom: 18px;
+}
+
+.form-field label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #475569;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  transition: 0.2s;
+  background: #fff;
+}
+
+input:focus, select:focus {
+  border-color: var(--med-blue-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
+}
+
+.action-btn {
+  width: 100%;
+  padding: 14px;
+  background: var(--med-blue-dark);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.2s;
+  letter-spacing: 1px;
+}
+
+.action-btn:hover {
+  background: #000;
+  transform: translateY(-1px);
+}
+
+/* MAIN OUTPUT - 2/3 (66%) */
+.main-view {
+  width: 66.66%;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
+}
+
+.report-container {
+  width: 100%;
+  max-width: 850px;
+  background: white;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.report-id {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.report-section {
+  border-top: 1px solid #f1f5f9;
+  padding-top: 30px;
+  margin-top: 30px;
+}
+
+.report-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--med-blue-dark);
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.badge-blue { background: var(--med-blue-light); color: var(--med-blue-primary); }
+.badge-teal { background: #f0fdf4; color: var(--med-teal); }
+
+.viz-box {
+  background: #f8fafc;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+  border: 1px solid #e2e8f0;
+}
