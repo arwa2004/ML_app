@@ -13,7 +13,7 @@ function App() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    axios.get(`${API_BASE}/metadata`).then(res => setMetadata(res.data)).catch(err => console.error(err));
+    axios.get(`${API_BASE}/api/metadata`).then(res => setMetadata(res.data)).catch(err => console.error(err));
   }, []);
 
   const handleSubmit = async (e) => {
@@ -27,7 +27,7 @@ function App() {
     }
     setLoading(true); setError("");
     try {
-      const response = await axios.post(`${API_BASE}/predict`, { ...formData, task });
+      const response = await axios.post(`${API_BASE}/api/predict`, { ...formData, task });
       setResult(response.data);
     } catch (err) {
       setError("Erreur serveur");
