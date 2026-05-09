@@ -47,16 +47,13 @@ function App() {
         <header className="app-header"><h1>ML PATIENT APP</h1></header>
         <nav className="nav-pills">
           <button className={`nav-btn ${task === 'diagnostic' ? 'active' : ''}`} onClick={() => { setTask('diagnostic'); setResult(null); }}>
-            <div style={{ fontSize: '0.6rem', opacity: 0.7 }}>PREDICTION</div>
-            <div style={{ marginTop: '2px' }}>XGBOOST</div>
+            PREDICTION
           </button>
           <button className={`nav-btn ${task === 'cost' ? 'active' : ''}`} onClick={() => { setTask('cost'); setResult(null); }}>
-            <div style={{ fontSize: '0.6rem', opacity: 0.7 }}>RECOMMANDATION</div>
-            <div style={{ marginTop: '2px' }}>RANDOM FOREST</div>
+            RECOMMANDATION
           </button>
           <button className={`nav-btn ${task === 'segmentation' ? 'active' : ''}`} onClick={() => { setTask('segmentation'); setResult(null); }}>
-            <div style={{ fontSize: '0.6rem', opacity: 0.7 }}>SEGMENTATION</div>
-            <div style={{ marginTop: '2px' }}>K-MEANS</div>
+            SEGMENTATION
           </button>
         </nav>
         <div className="input-section">
